@@ -1,65 +1,100 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+// ignore: constant_identifier_names
+const BG_COLOR = Color.fromRGBO(31, 31, 57, 1);
+
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  static const String _title = 'Ultimate Learning App';
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Ultimate Lanugage Learning Application',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const FirstRoute(),
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: _title,
+      home: MyStatefulWidget(),
     );
   }
 }
 
-class FirstRoute extends StatelessWidget {
-  const FirstRoute({super.key});
+class MyStatefulWidget extends StatefulWidget {
+  const MyStatefulWidget({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('First Route'),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          child: const Text('Open route'),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const SecondRoute()),
-            );
-          },
-        ),
-      ),
-    );
-  }
+  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
 }
 
-class SecondRoute extends StatelessWidget {
-  const SecondRoute({super.key});
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  int _selectedIndex = 0;
+  static const TextStyle optionStyle =
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static const List<Widget> _widgetOptions = <Widget>[
+    Text(
+      'Index 0: Home',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 1: Learning Cases',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 2: Search',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 3: Account',
+      style: optionStyle,
+    ),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Second Route'),
-      ),
+      backgroundColor: BG_COLOR,
       body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Text('Go back!'),
-        ),
+        child: _widgetOptions.elementAt(_selectedIndex),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home,
+              size: 24,
+            ),
+            label: 'Home',
+            backgroundColor: BG_COLOR,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.leaderboard),
+            label: 'Progress',
+            backgroundColor: BG_COLOR,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.school),
+            label: 'Account',
+            backgroundColor: BG_COLOR,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.account_box_rounded,
+            ),
+            label: 'Settings',
+            backgroundColor: BG_COLOR,
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: const Color.fromRGBO(61, 92, 225, 1),
+        unselectedItemColor: const Color.fromRGBO(184, 184, 210, 1),
+        onTap: _onItemTapped,
       ),
     );
   }
