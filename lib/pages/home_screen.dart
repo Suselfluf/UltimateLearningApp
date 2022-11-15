@@ -1,23 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../main.dart';
-
-// class HomeScreen extends StatelessWidget {
-//   const HomeScreen({super.key});
-
-//   @override
-//   Widget build(BuildContext context) => Scaffold(
-//         appBar: AppBar(
-//           title: const Text("Home Screen"),
-//           toolbarHeight: 183,
-//         ),
-//         body: CustomScrollView(
-//           slivers: [SliverAppBar.large()],
-//         ),
-//         backgroundColor: BG_COLOR,
-//       );
-// }
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -29,34 +11,96 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: const Color.fromRGBO(31, 31, 57, 1),
         body: CustomScrollView(
-      // May be rework to simple large static app bar !!!!!!!!!!!!!!!!!!
-      slivers: [
-        SliverAppBar.large(
-          // leading: const Padding(
-          //     padding: EdgeInsets.only(left: 10, bottom: 0, right: 0, top: 40),
-          //     child: Text(
-          //       "Hi, UserName",
-          //       style: TextStyle(
-          //         color: Color.fromARGB(255, 255, 255, 255),
-          //         fontSize: 24,
-          //       ),
-          //     )), // Manage alignment to make it corresponding to layout at Figma
-          title: const Padding(
-            padding: EdgeInsets.only(left: 10, bottom: 0, right: 0, top: 0),
-            child: Text(
-              "Hi, User Name!",
-              style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+          slivers: [
+            SliverAppBar(
+              title: Row(
+                children: [
+                  Column(
+                    children: [
+                      Text(
+                        'Hi, User Name',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontFamily: 'Aleo',
+                            fontStyle: FontStyle.normal,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 25.0,
+                            color: Colors.white),
+                      ),
+                      Text(
+                        "Let's start learning",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontFamily: 'Aleo',
+                            fontStyle: FontStyle.normal,
+                            fontSize: 14,
+                            color: Colors.white),
+                      ),
+                    ],
+                  ),
+                  Spacer(),
+                  Container(
+                    width: 80,
+                    height: 120,
+                    decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          image:
+                              AssetImage('assets/images/userImageSample.jpeg'),
+                        ),
+                        shape: BoxShape.circle),
+                  ),
+                ],
+              ),
+              backgroundColor: Color.fromRGBO(61, 92, 255, 1),
+              toolbarHeight: 120,
+              floating: true,
+              pinned: true,
+              snap: true,
             ),
-          ),
-          actions: [
-            IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.more_vert)) // Change Icon to user image
+            SliverToBoxAdapter(
+              // Rest of the content can be placed here
+              child: Column(
+                children: [
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    padding: const EdgeInsets.all(12),
+                    child: Row(children: [
+                      Card(
+                        elevation: 0,
+                        color: Theme.of(context).colorScheme.surfaceVariant,
+                        child: const SizedBox(
+                          width: 249,
+                          height: 154,
+                          child: Center(child: Text('Filled Card')),
+                        ),
+                      ),
+                      Card(
+                        elevation: 0,
+                        color: Theme.of(context).colorScheme.surfaceVariant,
+                        child: const SizedBox(
+                          width: 249,
+                          height: 154,
+                          child: Center(child: Text('Filled Card')),
+                        ),
+                      ),
+                      Card(
+                        elevation: 0,
+                        color: Theme.of(context).colorScheme.surfaceVariant,
+                        child: const SizedBox(
+                          width: 249,
+                          height: 154,
+                          child: Center(child: Text('Filled Card')),
+                        ),
+                      ),
+                    ]),
+                  ),
+                ],
+                // color: const Color.fromRGBO(31, 31, 57, 1),
+              ),
+            )
           ],
-          backgroundColor: Color.fromRGBO(61, 92, 255, 1),
-        ),
-      ],
-    ));
+        ));
   }
 }
