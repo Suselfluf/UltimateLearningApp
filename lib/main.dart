@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ultimate_learning_app/pages/account_screen.dart';
-import 'package:ultimate_learning_app/pages/cources_screen.dart';
+import 'package:ultimate_learning_app/pages/myprogrees_screen.dart';
 import 'package:ultimate_learning_app/pages/home_screen.dart';
 
 // ignore: constant_identifier_names
@@ -42,7 +42,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
     // screen's list
-    CourcesScreen(),
+    MyProgressScreen(),
     HomeScreen(),
     AccountScreen()
   ];

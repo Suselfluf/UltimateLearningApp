@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/activity_display.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -19,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Column(
                     children: [
-                      Text(
+                      const Text(
                         'Hi, User Name',
                         textAlign: TextAlign.center,
                         style: TextStyle(
@@ -29,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             fontSize: 25.0,
                             color: Colors.white),
                       ),
-                      Text(
+                      const Text(
                         "Let's start learning",
                         textAlign: TextAlign.center,
                         style: TextStyle(
@@ -40,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ],
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Container(
                     width: 80,
                     height: 120,
@@ -53,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               ),
-              backgroundColor: Color.fromRGBO(61, 92, 255, 1),
+              backgroundColor: const Color.fromRGBO(61, 92, 255, 1),
               toolbarHeight: 120,
               floating: true,
               pinned: true,
@@ -63,13 +65,16 @@ class _HomeScreenState extends State<HomeScreen> {
               // Rest of the content can be placed here
               child: Column(
                 children: [
+                  const ActivityDisplay(
+                    isShadow: true,
+                  ),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     padding: const EdgeInsets.all(12),
                     child: Row(children: [
                       Card(
                         elevation: 0,
-                        color: Theme.of(context).colorScheme.surfaceVariant,
+                        color: Theme.of(context).colorScheme.casesCard,
                         child: const SizedBox(
                           width: 249,
                           height: 154,
@@ -78,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       Card(
                         elevation: 0,
-                        color: Theme.of(context).colorScheme.surfaceVariant,
+                        color: Theme.of(context).colorScheme.casesCard,
                         child: const SizedBox(
                           width: 249,
                           height: 154,
@@ -87,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       Card(
                         elevation: 0,
-                        color: Theme.of(context).colorScheme.surfaceVariant,
+                        color: Theme.of(context).colorScheme.casesCard,
                         child: const SizedBox(
                           width: 249,
                           height: 154,
@@ -97,7 +102,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     ]),
                   ),
                 ],
-                // color: const Color.fromRGBO(31, 31, 57, 1),
               ),
             )
           ],
