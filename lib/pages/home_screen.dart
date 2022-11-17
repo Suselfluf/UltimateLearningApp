@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../widgets/activity_display.dart';
+import '../widgets/case_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -65,42 +66,24 @@ class _HomeScreenState extends State<HomeScreen> {
               // Rest of the content can be placed here
               child: Column(
                 children: [
-                  const ActivityDisplay(
+                  ActivityDisplay(
                     isShadow: true,
                   ),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    padding: const EdgeInsets.all(12),
-                    child: Row(children: [
-                      Card(
-                        elevation: 0,
-                        color: Theme.of(context).colorScheme.casesCard,
-                        child: const SizedBox(
-                          width: 249,
-                          height: 154,
-                          child: Center(child: Text('Filled Card')),
+                  Padding(
+                    padding: EdgeInsets.only(left: 20),
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      padding: const EdgeInsets.all(12),
+                      child: Row(children: [
+                        CaseCard(
+                          case_title: "Guards Communication",
                         ),
-                      ),
-                      Card(
-                        elevation: 0,
-                        color: Theme.of(context).colorScheme.casesCard,
-                        child: const SizedBox(
-                          width: 249,
-                          height: 154,
-                          child: Center(child: Text('Filled Card')),
-                        ),
-                      ),
-                      Card(
-                        elevation: 0,
-                        color: Theme.of(context).colorScheme.casesCard,
-                        child: const SizedBox(
-                          width: 249,
-                          height: 154,
-                          child: Center(child: Text('Filled Card')),
-                        ),
-                      ),
-                    ]),
-                  ),
+                        CaseCard(
+                          case_title: "Dorm Issues",
+                        )
+                      ]),
+                    ),
+                  )
                 ],
               ),
             )
