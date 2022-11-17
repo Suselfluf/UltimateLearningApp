@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ultimate_learning_app/widgets/home_app_bar.dart';
 
 import '../widgets/activity_display.dart';
 import '../widgets/case_card.dart';
@@ -17,50 +18,8 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: const Color.fromRGBO(31, 31, 57, 1),
         body: CustomScrollView(
           slivers: [
-            SliverAppBar(
-              title: Row(
-                children: [
-                  Column(
-                    children: [
-                      const Text(
-                        'Hi, User Name',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontFamily: 'Aleo',
-                            fontStyle: FontStyle.normal,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 25.0,
-                            color: Colors.white),
-                      ),
-                      const Text(
-                        "Let's start learning",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontFamily: 'Aleo',
-                            fontStyle: FontStyle.normal,
-                            fontSize: 14,
-                            color: Colors.white),
-                      ),
-                    ],
-                  ),
-                  const Spacer(),
-                  Container(
-                    width: 80,
-                    height: 120,
-                    decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image:
-                              AssetImage('assets/images/userImageSample.jpeg'),
-                        ),
-                        shape: BoxShape.circle),
-                  ),
-                ],
-              ),
-              backgroundColor: const Color.fromRGBO(61, 92, 255, 1),
-              toolbarHeight: 120,
-              floating: true,
-              pinned: true,
-              snap: true,
+            HomeAppBar(
+              user_name: "User Name",
             ),
             SliverToBoxAdapter(
               // Rest of the content can be placed here

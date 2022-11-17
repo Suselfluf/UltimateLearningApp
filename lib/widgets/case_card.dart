@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CaseCard extends StatefulWidget {
-  CaseCard({super.key, required this.case_title});
+  const CaseCard({super.key, required this.case_title});
   final String case_title;
 
   @override
@@ -22,37 +22,39 @@ class _CaseCardState extends State<CaseCard> {
             Align(
                 alignment: Alignment.topLeft,
                 child: Padding(
-                    padding: EdgeInsets.only(left: 18, top: 19),
-                    child: SizedBox(
-                        width: 150,
-                        child: Expanded(
-                          child: Text(
-                            overflow: TextOverflow.clip,
-                            textAlign: TextAlign.justify,
-                            widget.case_title,
-                            style: const TextStyle(
-                                color: Color.fromRGBO(31, 31, 57, 1),
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        )))),
-            Spacer(),
+                    padding: const EdgeInsets.only(left: 18, top: 19),
+                    child: Container(
+                      // width: 150, // For making text with 2 lines
+                      child: Text(
+                        widget.case_title,
+                        style: const TextStyle(
+                            color: Color.fromRGBO(31, 31, 57, 1),
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ))),
+            const Spacer(),
             Padding(
-              padding: EdgeInsets.only(top: 40, right: 120),
-              child: ElevatedButton(
-                style: const ButtonStyle(
-                  /// Change the border of the button - Ideally create new widget
-                  backgroundColor:
-                      MaterialStatePropertyAll(Color.fromRGBO(255, 105, 5, 1)),
-                ),
-                onPressed: () {},
-                child: const Text(
-                  'Enabled',
-                  style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.bold),
-                ),
-              ),
-            )
+                padding: const EdgeInsets.only(top: 40, right: 100, bottom: 10),
+                child: Padding(
+                  padding: EdgeInsets.only(bottom: 0),
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5),
+                        )),
+                        backgroundColor: const MaterialStatePropertyAll(
+                            Color.fromRGBO(255, 105, 5, 1))),
+                    onPressed: () {},
+                    child: const Text(
+                      'Get Started',
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ))
           ]),
         ),
       ),
