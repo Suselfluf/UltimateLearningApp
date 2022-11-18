@@ -38,8 +38,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   //   const Center(child: Text('Home')),
   //   const Center(child: Text('Account')),
   // ];
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
     // screen's list
     MyProgressScreen(),

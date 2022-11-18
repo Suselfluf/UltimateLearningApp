@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ultimate_learning_app/main.dart';
+import 'package:ultimate_learning_app/pages/vocabulary.dart';
 
 class AccountScreen extends StatefulWidget {
   const AccountScreen({super.key});
@@ -35,7 +36,13 @@ class _AccountScreenState extends State<AccountScreen> {
                     shape: BoxShape.circle),
               ),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const VocabularyScreen(),
+                    ),
+                  );
+                },
                 style: TextButton.styleFrom(
                   foregroundColor: Colors.white,
                 ),
