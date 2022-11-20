@@ -22,14 +22,14 @@ class _VocabularyOptionState extends State<VocabularyOption> {
       child: Row(children: [
         TextButton(
             onPressed: () {},
-            child: Text(
+            child: const Text(
               "Word",
               style: TextStyle(color: Colors.white, fontSize: 18),
             )),
-        Spacer(),
+        const Spacer(),
         IconButton(
             onPressed: () {},
-            icon: Icon(
+            icon: const Icon(
               Icons.translate_rounded,
               color: Colors.white,
             )),

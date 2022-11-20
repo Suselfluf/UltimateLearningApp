@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ultimate_learning_app/models/post.dart';
+import 'package:ultimate_learning_app/services/cases_data_remote.dart';
 import 'package:ultimate_learning_app/widgets/home_app_bar.dart';
 
 import '../widgets/activity_display.dart';
@@ -12,13 +14,31 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  var isLoaded = false;
+  List<Post>? posts;
+  @override
+  void initState() {
+    super.initState();
+    getCasesData();
+  }
+
+  getCasesData() async {
+    posts = await RemoteService().getPosts();
+    if (posts != null) {
+      debugPrint("Successful");
+      setState(() {
+        isLoaded = true;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: const Color.fromRGBO(31, 31, 57, 1),
         body: CustomScrollView(
           slivers: [
-            HomeAppBar(
+            const HomeAppBar(
               user_name: "User Name",
             ),
             SliverToBoxAdapter(
@@ -33,14 +53,18 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       padding: const EdgeInsets.all(12),
-                      child: Row(children: [
-                        CaseCard(
-                          case_title: "Guards Communication",
+                      child: Visibility(
+                        visible: isLoaded,
+                        replacement: const Center(
+                          child: CircularProgressIndicator(),
                         ),
-                        CaseCard(
-                          case_title: "Dorm Issues",
-                        )
-                      ]),
+                        child: //Text("Text"))
+                            Row(children: [
+                          if (posts != null)
+                            for (var i in posts!)
+                              CaseCard(case_title: i.meaning)
+                        ]),
+                      ),
                     ),
                   )
                 ],
