@@ -33,12 +33,12 @@ class _VocabularyOptionState extends State<VocabularyOption> {
               Icons.translate_rounded,
               color: Colors.white,
             )),
-        IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.volume_down_rounded,
-              color: Colors.white,
-            )),
+        // IconButton(
+        //     onPressed: () {},
+        //     icon: const Icon(
+        //       Icons.volume_down_rounded,
+        //       color: Colors.white,
+        //     )),
         IconButton(
             onPressed: () {},
             icon: const Icon(

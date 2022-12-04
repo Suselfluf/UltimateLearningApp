@@ -58,8 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         replacement: const Center(
                           child: CircularProgressIndicator(),
                         ),
-                        child: //Text("Text"))
-                            Row(children: [
+                        child: Row(children: [
                           if (posts != null)
                             for (var i in posts!)
                               CaseCard(case_title: i.meaning)

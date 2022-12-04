@@ -23,11 +23,7 @@ class _VocabularyScreenState extends State<VocabularyScreen> {
         backgroundColor: BG_COLOR,
         leading: IconButton(
           onPressed: () {
-            Navigator.of(context).pop(
-              MaterialPageRoute(
-                builder: (context) => const AccountScreen(),
-              ),
-            );
+            Navigator.of(context).pop();
           },
           icon: const Icon(
             Icons.arrow_back_ios_new_rounded,

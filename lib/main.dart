@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ultimate_learning_app/pages/account_screen.dart';
+import 'package:ultimate_learning_app/pages/case_screen.dart';
+import 'package:ultimate_learning_app/pages/lessons_screen.dart';
 import 'package:ultimate_learning_app/pages/myprogrees_screen.dart';
 import 'package:ultimate_learning_app/pages/home_screen.dart';
 
@@ -40,7 +42,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   // ];
   static const List<Widget> _widgetOptions = <Widget>[
     // screen's list
-    MyProgressScreen(),
+    // MyProgressScreen(),
+    LessonsScreen(),
     HomeScreen(),
     AccountScreen()
   ];

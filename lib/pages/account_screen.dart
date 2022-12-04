@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ultimate_learning_app/main.dart';
+import 'package:ultimate_learning_app/pages/myprogrees_screen.dart';
 import 'package:ultimate_learning_app/pages/vocabulary.dart';
 
 class AccountScreen extends StatefulWidget {
@@ -62,7 +63,13 @@ class _AccountScreenState extends State<AccountScreen> {
                 ),
               ),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const MyProgressScreen(),
+                    ),
+                  );
+                },
                 style: ButtonStyle(
                     foregroundColor: MaterialStateProperty.all(Colors.white)),
                 child: Row(

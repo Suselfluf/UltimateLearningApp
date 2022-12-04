@@ -2,6 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:ultimate_learning_app/pages/cases_progress_screen.dart';
+import 'package:ultimate_learning_app/pages/words_progress_screen.dart';
 
 class ProgressDisplay extends StatefulWidget {
   ProgressDisplay(
@@ -43,13 +45,13 @@ class _ProgressDisplay extends State<ProgressDisplay> {
         color: Theme.of(context).colorScheme.activityCard,
         child: SizedBox(
           width: 160,
-          height: 182,
+          height: 192,
           child: Padding(
-            padding: const EdgeInsets.only(left: 10, top: 25),
+            padding: const EdgeInsets.only(left: 10, top: 11),
             child: Column(
               children: [
                 Text(
-                  "${widget.progress_title}Progress",
+                  "${widget.progress_title} Progress",
                   style: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
@@ -87,11 +89,27 @@ class _ProgressDisplay extends State<ProgressDisplay> {
                       ),
                     ),
                     Spacer(),
-                    Icon(
-                      Icons.play_circle_rounded,
-                      size: 44,
-                      color: widget.card_progress_color,
-                    )
+                    IconButton(
+                        onPressed: () {
+                          widget.progress_title == "Cases"
+                              ? Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          CasesProgressScreen()),
+                                )
+                              : Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          WordsProgressScreen()),
+                                );
+                        },
+                        icon: Icon(
+                          Icons.more_horiz_rounded,
+                          size: 44,
+                          color: widget.card_progress_color,
+                        ))
                   ],
                 )
               ],

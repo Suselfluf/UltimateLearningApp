@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ultimate_learning_app/main.dart';
+import 'package:ultimate_learning_app/pages/account_screen.dart';
 import 'package:ultimate_learning_app/widgets/activity_display.dart';
 import 'package:ultimate_learning_app/widgets/progress_display.dart';
 
@@ -19,12 +20,13 @@ class _MyProgressScreenState extends State<MyProgressScreen> {
             style: TextStyle(color: Colors.white),
           ),
           leading: IconButton(
-            icon: const Icon(
-              Icons.arrow_back_ios_new_rounded,
-              color: Colors.white,
-            ),
-            onPressed: () {},
-          ),
+              icon: const Icon(
+                Icons.arrow_back_ios_new_rounded,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              }),
           backgroundColor: BG_COLOR,
         ),
         body: Container(
