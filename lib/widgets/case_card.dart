@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../pages/case_screen.dart';
+
 class CaseCard extends StatefulWidget {
   const CaseCard({super.key, required this.case_title});
   final String case_title;
@@ -47,7 +49,15 @@ class _CaseCardState extends State<CaseCard> {
                         )),
                         backgroundColor: const MaterialStatePropertyAll(
                             Color.fromRGBO(255, 105, 5, 1))),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => CaseScreen(
+                                  context: widget.case_title,
+                                )),
+                      );
+                    },
                     child: const Text(
                       'Get Started',
                       style: TextStyle(

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:ultimate_learning_app/models/post.dart';
 import 'package:ultimate_learning_app/services/cases_data_remote.dart';
 import 'package:ultimate_learning_app/widgets/home_app_bar.dart';
-
 import '../widgets/activity_display.dart';
 import '../widgets/case_card.dart';
 
@@ -25,7 +24,6 @@ class _HomeScreenState extends State<HomeScreen> {
   getCasesData() async {
     posts = await RemoteService().getPosts();
     if (posts != null) {
-      debugPrint("Successful");
       setState(() {
         isLoaded = true;
       });

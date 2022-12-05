@@ -37,9 +37,10 @@ class _MyProgressScreenState extends State<MyProgressScreen> {
                   isShadow: false,
                 ),
                 Padding(
-                  padding: EdgeInsets.only(left: 35, right: 35, top: 20),
+                  padding: EdgeInsets.only(top: 20),
                   child: Row(
                     children: [
+                      Spacer(),
                       ProgressDisplay(
                           isShadow: false,
                           progress_title: 'Cases',
@@ -49,7 +50,8 @@ class _MyProgressScreenState extends State<MyProgressScreen> {
                         isShadow: false,
                         progress_title: 'Words',
                         progress_percent: 0.75,
-                      )
+                      ),
+                      Spacer()
                     ],
                   ),
                 )
