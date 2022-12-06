@@ -1,32 +1,3 @@
-// import 'dart:convert';
-
-// List<LessonExercise> LessonExerciseFromJson(String str) =>
-//     List<LessonExercise>.from(
-//         json.decode(str).map((x) => LessonExercise.fromJson(x)));
-
-// String LessonExerciseToJson(List<LessonExercise> data) =>
-//     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
-
-// class LessonExercise {
-//   LessonExercise({
-//     required this.id,
-//     required this.option1,
-//   });
-
-//   int id;
-//   dynamic option1;
-
-//   factory LessonExercise.fromJson(Map<String, dynamic> json) => LessonExercise(
-//         id: json["id"],
-//         option1: json["option1"],
-//       );
-
-//   Map<String, dynamic> toJson() => {
-//         "id": id,
-//         "option1": option1,
-//       };
-// }
-
 import 'dart:convert';
 
 List<LessonExercise> LessonExerciseFromJson(String str) =>
@@ -87,6 +58,8 @@ class ExercisOptions {
   });
 
   factory ExercisOptions.fromJson(Map<String, dynamic> json) {
+    // print(utf8.encode(json["word"]));
+    // print(json);
     return ExercisOptions(
       id: json['id'],
       word: json['word'],

@@ -4,10 +4,14 @@ import 'package:flutter/material.dart';
 
 class ExerciseButton extends StatefulWidget {
   ExerciseButton(
-      {super.key, required this.button_text, required this.onAnswerSubmit});
+      {super.key,
+      required this.button_text,
+      required this.translation,
+      required this.onAnswerSubmit});
 
   final String button_text;
   final AsnwerCallback onAnswerSubmit;
+  final String translation;
 
   @override
   State<ExerciseButton> createState() => _ExerciseButtonState();
@@ -64,7 +68,7 @@ class _ExerciseButtonState extends State<ExerciseButton> {
               builder: (BuildContext context) {
                 return AlertDialog(
                   title: Text("Translation:"),
-                  content: Text("Saved successfully"),
+                  content: Text(widget.translation),
                 );
               });
         },

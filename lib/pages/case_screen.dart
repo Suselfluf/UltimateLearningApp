@@ -17,34 +17,18 @@ class CaseScreen extends StatefulWidget {
 }
 
 class _CaseScreenState extends State<CaseScreen> {
-  var isLoaded = false;
-  int _counter = 0;
   String _caseName = "Name1";
   String _contextTitle = "Context Title";
   List<LessonExercise>? exercises;
   void sendAnswer(answerData) => {print("Sending data: " + answerData)};
 
   void getExercises(contextTitle) {
-    print("Request sended");
     setState(() {
       _contextTitle = contextTitle;
     });
   }
 
-  getExercisesData(contextName) async {
-    exercises = await RemoteExerciesService().getExercies(contextName);
-    if (exercises != null) {
-      setState(() {
-        isLoaded = true;
-      });
-      debugPrint("Successful");
-      for (var e in exercises!) print(e.context.context);
-    }
-  }
-
   void initState() {
-    getExercisesData(widget.context);
-
     super.initState();
     WidgetsBinding.instance
         .addPostFrameCallback((_) => {getExercises(widget.context)});
@@ -68,7 +52,7 @@ class _CaseScreenState extends State<CaseScreen> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => HomeScreen()),
+                MaterialPageRoute(builder: (context) => MyApp()),
               );
             },
             icon: const Icon(
@@ -82,24 +66,14 @@ class _CaseScreenState extends State<CaseScreen> {
       ),
       body: Align(
           alignment: Alignment.center,
-          child: Visibility(
-              visible: isLoaded,
-              replacement: const Center(
-                child: CircularProgressIndicator(),
-              ),
-              child: ExerciseDisplay(
-                  image_url: "assets/images/CartoonStripDefault.png",
-                  button_option_1: "Option 1",
-                  button_option_2: "Option 2",
-                  button_option_3: "Option 3",
-                  button_option_4: "Option 4",
-                  onAnswerSubmit: (String answerData) {
-                    setState(() {
-                      print("State has been changed");
-                      _caseName = answerData; // Sent POST request with answer
-                      sendAnswer(answerData);
-                    });
-                  }))),
+          child: ExerciseDisplay(
+              contextTitle: widget.context,
+              onAnswerSubmit: (String answerData) {
+                setState(() {
+                  _caseName = answerData; // Sent POST request with answer
+                  sendAnswer(answerData);
+                });
+              })),
       backgroundColor: BG_COLOR,
     );
   }

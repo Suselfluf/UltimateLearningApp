@@ -4,6 +4,7 @@ import 'package:ultimate_learning_app/services/cases_data_remote.dart';
 import 'package:ultimate_learning_app/widgets/home_app_bar.dart';
 import '../widgets/activity_display.dart';
 import '../widgets/case_card.dart';
+import '../widgets/context_progress_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -46,24 +47,25 @@ class _HomeScreenState extends State<HomeScreen> {
                   ActivityDisplay(
                     isShadow: true,
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 20),
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      padding: const EdgeInsets.all(12),
-                      child: Visibility(
-                        visible: isLoaded,
-                        replacement: const Center(
-                          child: CircularProgressIndicator(),
-                        ),
-                        child: Row(children: [
-                          if (posts != null)
-                            for (var i in posts!)
-                              CaseCard(case_title: i.meaning)
-                        ]),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    padding: const EdgeInsets.only(top: 12),
+                    child: Visibility(
+                      visible: isLoaded,
+                      replacement: const Center(
+                        child: CircularProgressIndicator(),
                       ),
+                      child: Column(children: [
+                        if (posts != null)
+                          for (var i in posts!)
+                            ContextProgressCard(
+                              progress_percent: 0.75,
+                              progress_title: i.meaning,
+                            )
+                        // CaseCard(case_title: i.meaning)
+                      ]),
                     ),
-                  )
+                  ),
                 ],
               ),
             )
