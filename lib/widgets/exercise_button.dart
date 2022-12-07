@@ -1,4 +1,8 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+
+import '../services/vocabulary_data_remote.dart';
 // import 'package:flutter/src/widgets/container.dart';
 // import 'package:flutter/src/widgets/framework.dart';
 
@@ -18,6 +22,14 @@ class ExerciseButton extends StatefulWidget {
 }
 
 class _ExerciseButtonState extends State<ExerciseButton> {
+  void initState() {
+    super.initState();
+  }
+
+  addWordToDictionary(word) async {
+    RemoteVocabularyService().addWordToVocabulary(word);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(children: [
@@ -67,10 +79,20 @@ class _ExerciseButtonState extends State<ExerciseButton> {
               context: context,
               builder: (BuildContext context) {
                 return AlertDialog(
-                  title: Text("Translation:"),
-                  content: Text(widget.translation),
-                );
+                    title: Text(
+                      "Translation:",
+                    ),
+                    content: IntrinsicHeight(
+                        child: Column(children: [
+                      Text(
+                        widget.translation,
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                      Text("*Word has been added to dictionary")
+                    ])));
               });
+          addWordToDictionary(widget.button_text);
         },
       ),
       Spacer()

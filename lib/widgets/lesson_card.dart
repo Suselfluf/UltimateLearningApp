@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:ultimate_learning_app/pages/case_screen.dart';
 import 'package:ultimate_learning_app/pages/home_screen.dart';
+import 'package:ultimate_learning_app/pages/words_practice_screen.dart';
+
+import '../models/post.dart';
+import '../services/cases_data_remote.dart';
 
 class LessonCard extends StatefulWidget {
   const LessonCard({super.key, required this.lesson_title});
@@ -11,6 +15,23 @@ class LessonCard extends StatefulWidget {
 }
 
 class _LessonCardState extends State<LessonCard> {
+  var isLoaded = false;
+  List<Post>? cases;
+
+  void initState() {
+    super.initState();
+    getCasesData();
+  }
+
+  getCasesData() async {
+    cases = await RemoteService().getPosts();
+    if (cases != null) {
+      setState(() {
+        isLoaded = true;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -49,7 +70,11 @@ class _LessonCardState extends State<LessonCard> {
                       Color.fromRGBO(255, 105, 5, 1))),
               onPressed: () {
                 widget.lesson_title == "Words"
-                    ? DoNothingAction()
+                    ? Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => WordsPracticeScreen()),
+                      )
                     : Navigator.push(
                         context,
                         MaterialPageRoute(

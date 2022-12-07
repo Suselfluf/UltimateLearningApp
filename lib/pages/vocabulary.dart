@@ -3,6 +3,8 @@ import 'package:ultimate_learning_app/main.dart';
 import 'package:ultimate_learning_app/pages/account_screen.dart';
 import 'package:ultimate_learning_app/widgets/search_bar.dart';
 
+import '../models/vocabulary_data.dart';
+import '../services/vocabulary_data_remote.dart';
 import '../widgets/vocabulary_option.dart';
 
 class VocabularyScreen extends StatefulWidget {
@@ -13,7 +15,22 @@ class VocabularyScreen extends StatefulWidget {
 }
 
 class _VocabularyScreenState extends State<VocabularyScreen> {
-  List<int> vocabulary_array = [1, 2, 3, 4];
+  List<VocabularyData>? vocabulary_data;
+  bool isLoaded = false;
+
+  void initState() {
+    super.initState();
+    getVocabularyData();
+  }
+
+  getVocabularyData() async {
+    vocabulary_data = await RemoteVocabularyService().getVocabulary();
+    if (vocabulary_data != null) {
+      setState(() {
+        isLoaded = true;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,10 +60,22 @@ class _VocabularyScreenState extends State<VocabularyScreen> {
             padding: EdgeInsets.only(top: 20),
             child: Column(
               children: [
-                // for (int i = 0; i < vocabulary_array.length; i++)
-                //   VocabularyOption(),
-                for (var i in vocabulary_array)
-                  VocabularyOption(), // Looping trhough recieved array
+                Visibility(
+                  visible: isLoaded,
+                  replacement: const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                  child: Column(children: [
+                    if (vocabulary_data != null)
+                      for (var v_c in vocabulary_data!)
+                        // Text(v_c.vocabularyWord.meaning)
+                        VocabularyOption(
+                          id: v_c.vocabularyWord.id,
+                          word: v_c.vocabularyWord.word,
+                          meaning: v_c.vocabularyWord.meaning,
+                        )
+                  ]),
+                ),
               ],
             ))
       ]),

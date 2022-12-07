@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
 
 class VocabularyOption extends StatefulWidget {
-  const VocabularyOption({super.key});
+  const VocabularyOption(
+      {super.key, required this.id, required this.word, required this.meaning});
 
+  final int id;
+  final String word;
+  final String meaning;
   @override
   State<VocabularyOption> createState() => _VocabularyOptionState();
 }
 
 class _VocabularyOptionState extends State<VocabularyOption> {
+  late String _buttonText = widget.word;
+  bool _isTranslated = false;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,13 +29,21 @@ class _VocabularyOptionState extends State<VocabularyOption> {
       child: Row(children: [
         TextButton(
             onPressed: () {},
-            child: const Text(
-              "Word",
+            child: Text(
+              _buttonText,
               style: TextStyle(color: Colors.white, fontSize: 18),
             )),
         const Spacer(),
         IconButton(
-            onPressed: () {},
+            onPressed: () {
+              setState(() {
+                _isTranslated = !_isTranslated;
+                if (_isTranslated)
+                  _buttonText = widget.meaning;
+                else
+                  _buttonText = widget.word;
+              });
+            },
             icon: const Icon(
               Icons.translate_rounded,
               color: Colors.white,

@@ -7,33 +7,21 @@ import '../models/lessons_exercise.dart';
 import '../services/exercises_data_reomote.dart';
 import '../widgets/exersice_display.dart';
 
-class CaseScreen extends StatefulWidget {
-  CaseScreen({super.key, required this.context});
-
-  final String context;
+class WordsPracticeScreen extends StatefulWidget {
+  WordsPracticeScreen({super.key});
 
   @override
-  State<CaseScreen> createState() => _CaseScreenState();
+  State<WordsPracticeScreen> createState() => _WordsPracticeScreenState();
 }
 
-class _CaseScreenState extends State<CaseScreen> {
-  String _caseName = "Name1";
-  String _contextTitle = "Random Cases";
-  List<LessonExercise>? exercises;
-  void sendAnswer(answerData) => {print("Sending data: " + answerData)};
-
+class _WordsPracticeScreenState extends State<WordsPracticeScreen> {
   void getExercises(contextTitle) {
-    setState(() {
-      _contextTitle = contextTitle;
-    });
+    setState(() {});
   }
 
   void initState() {
-    if (widget.context != "Random") {
-      super.initState();
-      WidgetsBinding.instance
-          .addPostFrameCallback((_) => {getExercises(widget.context)});
-    }
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) => {});
   }
 
   Widget build(BuildContext context) {
@@ -64,13 +52,9 @@ class _CaseScreenState extends State<CaseScreen> {
             ),
           ),
         ],
-        title: Text(_contextTitle, style: TextStyle(color: Colors.white)),
+        title: Text("Words Practice", style: TextStyle(color: Colors.white)),
       ),
-      body: Align(
-          alignment: Alignment.center,
-          child: ExerciseDisplay(
-            contextTitle: widget.context,
-          )),
+      body: Align(alignment: Alignment.center, child: Text("Body text")),
       backgroundColor: BG_COLOR,
     );
   }

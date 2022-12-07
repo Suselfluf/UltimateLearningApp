@@ -9,7 +9,6 @@ import '../models/lessons_exercise.dart';
 
 class RemoteExerciesService {
   Future<List<LessonExercise>?> getExercies(context) async {
-    var client = http.Client();
     switch (context) {
       case "Gaurd Communication":
         context = 1;
@@ -43,5 +42,38 @@ class RemoteExerciesService {
     }
 
     return null;
+  }
+
+  Future<List<LessonExercise>?> getRandomExercies() async {
+    var httpClient = HttpClient();
+
+    var uri = Uri.parse(
+        'http://10.91.57.56:8000/lesson/exercise/random/2/testuser@mail.ru');
+
+    var request = await httpClient.getUrl(uri);
+    var response2 = await request.close();
+
+    if (response2.statusCode == HttpStatus.OK) {
+      var json2 = await response2.transform(utf8.decoder).join();
+      var data = json.decode(json2);
+      return LessonExerciseFromJson(json2);
+    }
+
+    return null;
+  }
+
+  Future<List<LessonExercise>?> submitAnswer(word, isCorrect) async {
+    var request = http.MultipartRequest(
+        'POST', Uri.parse('http://10.91.57.56:8000/lesson/report/'));
+    request.fields
+        .addAll({'email': 'testuser@mail.ru', 'word': word, 'type': isCorrect});
+
+    http.StreamedResponse response = await request.send();
+
+    if (response.statusCode == 200) {
+      print("Sent");
+    } else {
+      print("Failed");
+    }
   }
 }

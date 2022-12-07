@@ -38,6 +38,7 @@ dependencies:
   percent_indicator: ^4.2.2
   http: ^0.13.5
   flutter_hooks: ^0.18.5+1
+  bordered_text: ^2.0.0
 
 dev_dependencies:
   flutter_test:

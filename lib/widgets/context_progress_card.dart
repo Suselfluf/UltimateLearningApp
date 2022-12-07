@@ -1,9 +1,10 @@
 import 'dart:math';
 
+import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-import 'package:ultimate_learning_app/pages/case_screen.dart';
-import 'package:ultimate_learning_app/pages/cases_progress_screen.dart';
+
+import '../pages/case_screen.dart';
 
 class ContextProgressCard extends StatefulWidget {
   ContextProgressCard(
@@ -53,12 +54,15 @@ class _ContextProgressCard extends State<ContextProgressCard> {
             padding: const EdgeInsets.only(top: 11),
             child: Column(
               children: [
-                Text(
-                  "${widget.progress_title} Progress",
-                  style: const TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16),
+                BorderedText(
+                  strokeWidth: 1.0,
+                  child: Text(
+                    "${widget.progress_title} Progress",
+                    style: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16),
+                  ),
                 ),
                 const SizedBox(height: 10),
                 Row(children: [
@@ -89,16 +93,26 @@ class _ContextProgressCard extends State<ContextProgressCard> {
                                 border: Border.all(
                                     color: widget.card_progress_color)),
                             width: 200,
-                            child: const Text(
-                              "Mistakes Practice",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500),
+                            child: BorderedText(
+                              strokeWidth: 1.0,
+                              child: const Text(
+                                "Mistakes Practice",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500),
+                              ),
                             ),
                           )),
                       TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => CaseScreen(
+                                      context: widget.progress_title)),
+                            );
+                          },
                           child: Container(
                             decoration: BoxDecoration(
                                 borderRadius:
@@ -116,21 +130,6 @@ class _ContextProgressCard extends State<ContextProgressCard> {
                                   fontWeight: FontWeight.w500),
                             ),
                           ))
-
-                      // IconButton(
-                      //   onPressed: () {
-                      //     Navigator.push(
-                      //       context,
-                      //       MaterialPageRoute(
-                      //           builder: (context) => CaseScreen(
-                      //                 context: widget.progress_title,
-                      //               )),
-                      //     );
-                      //   },
-                      //   icon: Icon(Icons.play_circle_fill_rounded),
-                      //   iconSize: 45,
-                      //   color: widget.card_progress_color,
-                      // )
                     ],
                   ),
                   const Spacer(),
