@@ -19,6 +19,13 @@ class WordsProgressCard extends StatefulWidget {
 }
 
 class _WordsProgressCard extends State<WordsProgressCard> {
+  late double _progress = Random().nextDouble();
+
+  void initState() {
+    setState(() {});
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -83,14 +90,14 @@ class _WordsProgressCard extends State<WordsProgressCard> {
                   children: [
                     Spacer(),
                     Text(
-                      "${(widget.progress_percent * 100).toInt()}%",
+                      "${(_progress * 100).toInt()}%",
                       style: TextStyle(
                           color: Color.fromRGBO(74, 58, 255, 1),
                           fontSize: 18,
                           fontWeight: FontWeight.w700),
                     ),
                     Text(
-                      "${100 - (widget.progress_percent * 100).toInt()}%",
+                      "${100 - (_progress * 100).toInt()}%",
                       style: TextStyle(
                           color: Color.fromRGBO(240, 229, 252, 1),
                           fontSize: 18,
@@ -108,7 +115,7 @@ class _WordsProgressCard extends State<WordsProgressCard> {
                       animation: true,
                       animationDuration: 1200,
                       lineWidth: 5.0,
-                      percent: 0.4,
+                      percent: _progress,
                       circularStrokeCap: CircularStrokeCap.butt,
                       backgroundColor: Color.fromRGBO(240, 229, 252, 1),
                       progressColor: Color.fromRGBO(74, 58, 255, 1),
@@ -116,7 +123,7 @@ class _WordsProgressCard extends State<WordsProgressCard> {
                     Row(
                       children: [
                         Text(
-                          "32312",
+                          (_progress * 10000).toInt().toString(),
                           style: TextStyle(
                               color: Color.fromRGBO(74, 58, 255, 1),
                               fontSize: 14,
@@ -127,7 +134,7 @@ class _WordsProgressCard extends State<WordsProgressCard> {
                           style: TextStyle(color: Colors.white),
                         ),
                         Text(
-                          "124125",
+                          "${10000 - (_progress * 100).toInt()}",
                           style: TextStyle(
                               color: Color.fromRGBO(240, 229, 252, 1),
                               fontSize: 14,

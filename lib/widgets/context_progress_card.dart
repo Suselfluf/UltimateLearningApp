@@ -23,12 +23,18 @@ class ContextProgressCard extends StatefulWidget {
 
 class _ContextProgressCard extends State<ContextProgressCard> {
   // String percentText = ();
+  late double _progress;
   List<Color> colors = [
     Colors.white,
     Color.fromRGBO(47, 47, 66, 1),
     Colors.yellow
   ];
   void initState() {
+    if (widget.progress_percent != null) {
+      _progress = widget.progress_percent;
+    } else {
+      _progress = 0.45;
+    }
     super.initState();
     if (widget.card_progress_color == colors[0] ||
         widget.card_progress_color == colors[1]) {

@@ -46,14 +46,14 @@ class ExercisOptions {
   int id;
   String word;
   String meaning;
-  // String weight;
+  double weight;
   // int context;
 
   ExercisOptions({
     required this.id,
     required this.word,
     required this.meaning,
-    // required this.weight,
+    required this.weight,
     // required this.context,
   });
 
@@ -64,7 +64,7 @@ class ExercisOptions {
       id: json['id'],
       word: json['word'],
       meaning: json['meaning'],
-      // weight: json['weight'],
+      weight: json['weight'],
       // context: json['context']
     );
   }
@@ -75,14 +75,14 @@ class Answer {
   int id;
   String word;
   String meaning;
-  // String weight;
+  double weight;
   // int context;
 
   Answer({
     required this.id,
     required this.word,
     required this.meaning,
-    // required this.weight,
+    required this.weight,
     // required this.context,
   });
 
@@ -91,7 +91,7 @@ class Answer {
       id: json['id'],
       word: json['word'],
       meaning: json['meaning'],
-      // weight: json['weight'],
+      weight: json['weight'],
       // context: json['context']
     );
   }
@@ -102,13 +102,13 @@ class Context {
   int id;
   String context;
   String meaning;
-  // String weight;
+  double weight;
 
   Context({
     required this.id,
     required this.context,
     required this.meaning,
-    // required this.weight,
+    required this.weight,
   });
 
   factory Context.fromJson(Map<String, dynamic> json) {
@@ -116,7 +116,7 @@ class Context {
       id: json['id'],
       context: json['context'],
       meaning: json['meaning'],
-      // weight: json['weight'],
+      weight: json['weight'],
     );
   }
 }

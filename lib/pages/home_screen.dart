@@ -59,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         if (posts != null)
                           for (var i in posts!)
                             ContextProgressCard(
-                              progress_percent: 0.75,
+                              progress_percent: i.weight,
                               progress_title: i.meaning,
                             )
                         // CaseCard(case_title: i.meaning)

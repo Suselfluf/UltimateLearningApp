@@ -21,7 +21,7 @@ class _ExerciseDisplayState extends State<ExerciseDisplay> {
   bool isLoaded = false;
   bool isComplete = false;
   bool isMistake = false;
-  String _image_url = "assets/images/CartoonStripDefault.png";
+  String _image_url = "assets/images/Image6.jpg";
   String _button1 = "Name1";
   String _buttonTranslated1 = "tranlation1";
   String _button2 = "Name2";
@@ -104,8 +104,19 @@ class _ExerciseDisplayState extends State<ExerciseDisplay> {
         isLoaded = true;
         print(index);
         sendRequestWithAnswer(userChoice);
-        // print(e.option1.word);
+        if (exercises![index].id == 1) {
+          _image_url = "assets/images/Image6.jpg";
+        } else {
+          _image_url = "assets/images/Image4.jpg";
+        }
         _button1 = exercises![index].option1.word;
+        _button2 = exercises![index].option2.word;
+        _button3 = exercises![index].option3.word;
+        _button4 = exercises![index].option4.word;
+        _buttonTranslated1 = exercises![index].option1.meaning;
+        _buttonTranslated2 = exercises![index].option2.meaning;
+        _buttonTranslated3 = exercises![index].option3.meaning;
+        _buttonTranslated4 = exercises![index].option4.meaning;
         // _button2 = e.option2.word;
         // _button3 = e.option3.word;
         // _button4 = e.option4.word;
@@ -230,12 +241,15 @@ class _ExerciseDisplayState extends State<ExerciseDisplay> {
                     ),
                   ],
                 ),
-                if (isMistake == true)
-                  Icon(
-                    Icons.close,
-                    size: 45,
-                    color: Colors.redAccent,
-                  ),
+                isMistake
+                    ? Icon(
+                        Icons.close,
+                        size: 45,
+                        color: Colors.redAccent,
+                      )
+                    : SizedBox(
+                        height: 45,
+                      ),
                 Spacer()
               ],
             ),

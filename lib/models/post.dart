@@ -14,12 +14,12 @@ class Post {
   Post({
     required this.id,
     required this.meaning,
-    this.weight,
+    required this.weight,
   });
 
   int id;
   String meaning;
-  int? weight;
+  double weight;
 
   factory Post.fromJson(Map<String, dynamic> json) => Post(
         id: json["id"],
