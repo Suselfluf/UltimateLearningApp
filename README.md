@@ -1,6 +1,5 @@
-# ultimate_learning_app
-
-A new Flutter project.
+# Ultimate Learning Application
+Flutter project (without backend) serving as language learning tool for students of Innopolis University
 
 ## Getting Started
 
